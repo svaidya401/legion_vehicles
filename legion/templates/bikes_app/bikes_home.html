@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% extends "main_app/base.html" %}
+  {% block body_block %}
+  {% if bikes %}
+    <div class="row row-cols-1 row-cols-md-3">
+      {% for bike in bikes %}
+      <div class="col mb-4">
+          <div class="card">
+            <img class="card-img-top" src= {{ bike.image_link }} alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">{{ bike.model }} {{ bike.variant }}</h5>
+              <table>
+                <tr>
+                  <td>{{ bike.manufacturer }}</td> <td>{{ bike.engine_displacement }}</td>
+                </tr>
+                <tr>
+                  <td><span>Ex-Showroom price</span></td>
+                </tr>
+                <tr>
+                  <td>{{bike.ex_showroom_price}}</td>
+                </tr>
+              </table>
+              <a href="{% url 'bikes_app:bikeDetails' id=bike.id %}" class="btn btn-primary">Details >></a>
+            </div>
+            <div class="card-footer">
+              <small class="text-muted">Get amazing Offers and extra discounts</small>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+  {% else %}
+    <p>BIKES NOT FOUND !!!</p>
+    <p>Add Some bikes from Admin Page</p>
+  {% endif %}
+  {% endblock %}

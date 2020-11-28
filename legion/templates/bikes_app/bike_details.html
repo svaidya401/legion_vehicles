@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+{% extends "main_app/base.html" %}
+  {% block body_block %}
+  {% if bike_details %}
+
+  <h1 class="container center">{{ bike_details.bike.manufacturer }} {{ bike_details.bike.model }} {{ bike_details.bike.variant}}</h1>
+  <dl class="container row mx-auto">
+
+    <dt class="col-sm-3">Price</dt>
+    <dd class="col-sm-9">{{ bike_details.bike.ex_showroom_price }}</dd>
+
+    <dt class="col-sm-3">Engine Type</dt>
+    <dd class="col-sm-9">{{ bike_details.engine_type }}</dd>
+
+    <dt class="col-sm-3">Engine Diplacement</dt>
+    <dd class="col-sm-9">{{ bike_details.bike.engine_displacement }}</dd>
+
+    <dt class="col-sm-3">Cooling System</dt>
+    <dd class="col-sm-9">{{ bike_details.cooling_system }}</dd>
+
+    <dt class="col-sm-3">Max Power</dt>
+    <dd class="col-sm-9">{{ bike_details.power }}</dd>
+
+    <dt class="col-sm-3">Max Torque</dt>
+    <dd class="col-sm-9">{{ bike_details.torque }}</dd>
+
+    <dt class="col-sm-3">Fuel Type</dt>
+    <dd class="col-sm-9">{{ bike_details.fuel_type }}</dd>
+
+    <dt class="col-sm-3">Wheel Type</dt>
+    <dd class="col-sm-9">{{ bike_details.wheels }}</dd>
+
+    {% if bike_details.transmission %}
+      <dt class="col-sm-3">Transmission</dt>
+      <dd class="col-sm-9">{{ bike_details.transmission }}</dd>
+      {% if bike_details.transmission == "Manual" %}
+        <dt class="col-sm-3">No of Gears</dt>
+        <dd class="col-sm-9">{{ bike_details.no_of_gears }}</dd>
+      {% endif %}
+    {% endif %}
+
+    <dt class="col-sm-3">Brake Front</dt>
+    <dd class="col-sm-9">{{ bike_details.brake_front }}</dd>
+
+    <dt class="col-sm-3">Brake Rear</dt>
+    <dd class="col-sm-9">{{ bike_details.brake_rear }}</dd>
+
+    <dt class="col-sm-3">Suspension Front</dt>
+    <dd class="col-sm-9">{{ bike_details.suspension_front }}</dd>
+
+    <dt class="col-sm-3">Suspension Rear</dt>
+    <dd class="col-sm-9">{{ bike_details.suspension_rear }}</dd>
+
+    <dt class="col-sm-3">Body Type</dt>
+    <dd class="col-sm-9">{{ bike_details.body_type }}</dd>
+
+    <dt class="col-sm-3">ABS</dt>
+    <dd class="col-sm-9">{{ bike_details.ABS }}</dd>
+
+    <dt class="col-sm-3">Console</dt>
+    <dd class="col-sm-9">{{ bike_details.console }}</dd>
+  </dl>
+
+  {% else %}
+    <p>BIKE Details NOT FOUND !!!</p>
+    <p>Add Some bikes from Admin Page</p>
+  {% endif %}
+  {% endblock %}
