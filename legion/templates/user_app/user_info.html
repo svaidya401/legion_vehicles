@@ -1,0 +1,26 @@
+{% extends "main_app/base.html" %}
+{% block body_block %}
+
+<div class="jumbotron">
+
+  <img src="https://imagevars.gulfnews.com/2020/01/22/Hrithik-Roshan--3--1579703264814_16fcda6e62f_large.jpg class="rounded mx-auto d-block" ">
+  <h1>Hi {{ user_profile.first_name }} {{ user_profile.last_name }}</h1>
+</div>
+<div class="container">
+  <dl class="container row mx-auto">
+
+    <dt class="col-sm-3">Email</dt>
+    <dd class="col-sm-9">{{ user_profile.user.email }}</dd>
+
+    <dt class="col-sm-3">Username</dt>
+    <dd class="col-sm-9">{{ user_profile.user.username }}</dd>
+
+    <dt class="col-sm-3">First name</dt>
+    <dd class="col-sm-9">{{ user_profile.first_name }}</dd>
+
+    <dt class="col-sm-3">Last name</dt>
+    <dd class="col-sm-9">{{ user_profile.last_name }}</dd>
+
+  </dl>
+</div>
+{% endblock %}
