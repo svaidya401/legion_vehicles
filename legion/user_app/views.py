@@ -1,11 +1,11 @@
 from django.shortcuts import render
 from user_app.forms import UserForm, UserProfileForm
-from user_app.models import Role
+from user_app.models import Role, UserProfile
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
-
+from django.contrib.auth.models import User
 # Create your views here.
 
 def register(request):
@@ -76,3 +76,11 @@ def user_login(request):
 def user_logout(request):
     logout(request)
     return HttpResponseRedirect(reverse('bikes_app:bikesHome'))
+
+@login_required
+def user_info(request):
+    print("LOGGED IN USER : {}".format(request.user.username))
+    logged_in_user = request.user.username
+    user = User.objects.get(username=logged_in_user)
+    profile = UserProfile.objects.get(user=user)
+    return render(request, "user_app/user_info.html", {"user_profile":profile})
