@@ -20,12 +20,6 @@ with open("Bike info - Sheet1.csv", 'r') as file:
         data_dict[row_count] = row_data
         row_count += 1
 
-    # for key in data_dict:
-    #     print("--------------------------------------------")
-    #     print(data_dict[key])
-    #     print("--------------------------------------------")
-
-
 
     for key in data_dict:
         data = data_dict[key]
